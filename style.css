@@ -54,12 +54,14 @@
   padding-right:max(16px, env(safe-area-inset-right));
 }
 
-/* Café – center hero CTAs and button label */
+/* Center hero CTA container */
 #cafe-demo .hero-cta{ justify-content:center; }
+
+/* Center text inside hero buttons */
 #cafe-demo .btn,
 #cafe-demo .btn-outline{
-  justify-content:center;       /* centers label inside the button */
-  text-align:center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Café – hide any stray loader/placeholder images that WP/plugins might inject */
@@ -71,6 +73,16 @@
 #cafe-demo #gallery img[src="#"],
 #cafe-demo #gallery img[src=""]{
   display:none !important;
+}
+
+/* Only allow our curated images to render in the café gallery */
+#cafe-demo #gallery .gallery.rw-fixed > :not(img[data-rw]) {
+  display: none !important;
+}
+
+/* Extra safety: if a plugin duplicates nodes, cap at 8 */
+#cafe-demo #gallery .gallery.rw-fixed img[data-rw]:nth-of-type(n+9){
+  display: none !important;
 }
 
 /* Café – better padding on mobile so hero text doesn’t hug the left edge */
