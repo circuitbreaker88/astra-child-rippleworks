@@ -37,8 +37,19 @@
   }
 }
 
-/* Hide any top-level images WP may inject on the cafe page */
+/* Café page: hide any top-level WP-injected images before our block */
 .page-template-page-static-partial-php .entry-content > figure.wp-block-image,
 .page-template-page-static-partial-php .entry-content > p > img {
   display: none !important;
+}
+
+/* Belt-and-braces: on this template only, show only our app root if present */
+.page-template-page-static-partial-php .entry-content > :not(#cafe-demo) {
+  display: none !important;
+}
+
+/* Give the fixed header safe-area padding on mobile */
+.page-template-page-static-partial-php #cafe-demo .rw-nav{
+  padding-left:max(16px, env(safe-area-inset-left));
+  padding-right:max(16px, env(safe-area-inset-right));
 }
