@@ -1,21 +1,24 @@
 <div id="cafe-demo">
   <style>
     /* Café palette: warm wood + cream, teal accent for CTAs */
-    #cafe-demo{--bg:#1b1410;--panel:#231915;--cream:#FFF7ED;--text:#2a1b13;--muted:#6b5b53;--accent:#0EA5A4;--accent-2:#d97706;--border:rgba(0,0,0,.12);--card:#ffffff;--header-h:72px;
+    #cafe-demo{--bg:#1b1410;--panel:#231915;--cream:#FFF7ED;--text:#2a1b13;--muted:#6b5b53;--accent:#0EA5A4;--accent-2:#d97706;--border:rgba(0,0,0,.12);--card:#ffffff;--header-h:72px;--glow:rgba(14,165,164,.35);--chip-bg:rgba(14,165,164,.12);
       background:var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans"; line-height:1.6;}
     #cafe-demo *{box-sizing:border-box}
+    #cafe-demo :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     #cafe-demo a{color:inherit;text-decoration:none}
     #cafe-demo .container{max-width:1040px;margin:0 auto;padding:0 20px}
 
     /* Buttons */
-    #cafe-demo .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--accent),#14b8a6);color:#032b2a;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 8px 20px rgba(20,184,166,.25)}
-    #cafe-demo .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+    #cafe-demo .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--accent),#14b8a6);color:#032b2a;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 8px 20px rgba(20,184,166,.25);transition:transform .2s,box-shadow .2s}
+    #cafe-demo .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;transition:transform .2s,box-shadow .2s}
+    #cafe-demo .btn:hover,#cafe-demo .btn:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,184,166,.35)}
+    #cafe-demo .btn-outline:hover,#cafe-demo .btn-outline:focus-visible{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,.3)}
 
     
 
     /* Hero with background image */
     #cafe-demo .hero{position:relative;color:#fff}
-    #cafe-demo .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;filter:saturate(1.05)}
+    #cafe-demo .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;filter:saturate(1.05);will-change:transform}
     #cafe-demo .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,16,.55),rgba(27,20,16,.78))}
     #cafe-demo .hero .inner{position:relative;padding:120px 0 60px}
     #cafe-demo .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:#a7f3d0;font-weight:800}
@@ -25,24 +28,40 @@
 
     /* Sections */
     #cafe-demo section{padding:64px 0}
-    #cafe-demo .section-title{font-family:"Playfair Display",Georgia,serif;font-size:32px;margin:0 0 10px;color:var(--cream)}
+    #cafe-demo .section-title{font-family:"Playfair Display",Georgia,serif;font-size:32px;margin:0 0 10px;color:var(--cream);position:relative}
+    #cafe-demo .section-title::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+    #cafe-demo .section-title:hover::after{transform:scaleX(1)}
     #cafe-demo .section-sub{color:#d1ccc7;margin-bottom:22px}
 
     /* Dark panel section */
     #cafe-demo .panel{background:linear-gradient(180deg,#2a201b,#1e1713);padding:48px 0;color:#efeae6}
     #cafe-demo .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    #cafe-demo .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.12);color:var(--text)}
+    #cafe-demo .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.12);color:var(--text);transition:transform .2s,box-shadow .2s}
+    #cafe-demo .card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.15)}
     #cafe-demo .card h3{margin:6px 0 6px;color:#1f2937}
 
     /* Menu grid (cream background) */
-    #cafe-demo .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    #cafe-demo .item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed rgba(0,0,0,.15);padding:10px 0}
-    #cafe-demo .price{font-weight:800;color:#0f766e}
+    #cafe-demo .tabs{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+    #cafe-demo .tabs .tab{background:var(--panel);color:var(--cream);padding:8px 14px;border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:background .2s,color .2s,transform .2s}
+    #cafe-demo .tabs .tab[aria-selected="true"]{background:var(--accent);color:#032b2a}
+    #cafe-demo .tabs .tab:hover{transform:translateY(-2px)}
+    #cafe-demo .menu-panels .menu-panel{display:none}
+    #cafe-demo .menu-panels .menu-panel.active{display:block}
+    #cafe-demo .menu-panel .item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,.15)}
+    #cafe-demo .menu-panel .item:last-child{border-bottom:none}
+    #cafe-demo .menu-panel .item img{width:60px;height:60px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    #cafe-demo .menu-panel .name{font-weight:600}
+    #cafe-demo .menu-panel .note{display:block;font-size:12px;color:var(--muted)}
+    #cafe-demo .menu-panel .dots{flex:1;border-bottom:1px dotted rgba(0,0,0,.15);margin:0 8px}
+    #cafe-demo .menu-panel .price{font-weight:700;color:#0f766e}
+    #cafe-demo .tag{background:var(--chip-bg);color:var(--accent);font-size:11px;padding:0 4px;border-radius:4px;margin-left:4px}
 
     /* Hours / Contact block */
     #cafe-demo .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     #cafe-demo .box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--text)}
     #cafe-demo .map{height:260px;border-radius:12px;background:linear-gradient(180deg,#e5e7eb,#d1d5db);display:grid;place-items:center;color:#475569;border:1px solid #cbd5e1}
+    #cafe-demo .map .links{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    #cafe-demo .info-row{margin-top:12px;font-size:14px;color:var(--muted);text-align:center}
 
     /* Footer */
     #cafe-demo footer{border-top:1px solid rgba(255,255,255,.12);padding:26px 0;color:#d6d3d1;text-align:center;background:#1b1410}
@@ -51,10 +70,40 @@
     #cafe-demo form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     #cafe-demo form .full{grid-column:1/-1}
     #cafe-demo input,#cafe-demo textarea{width:100%;background:#0b1426;color:#E7F2FB;border:1px solid rgba(255,255,255,.15);padding:12px;border-radius:10px}
+    #cafe-demo .success{margin-top:10px;color:#16a34a;display:flex;align-items:center;gap:6px;font-weight:600}
+    #cafe-demo .success .tick{font-size:16px}
+    #cafe-demo .privacy{margin-top:12px;font-size:12px;color:var(--muted)}
 
     /* Mobile */
     @media(max-width:900px){#cafe-demo .two{grid-template-columns:1fr}}
+    @media(max-width:900px){#cafe-demo .gallery{column-count:2}}
     @media(max-width:520px){#cafe-demo .container{padding:0 14px}#cafe-demo h1{font-size:34px}#cafe-demo section{padding:52px 0}}
+    @media(max-width:520px){#cafe-demo .gallery{column-count:1}}
+
+    /* Specials */
+    #cafe-demo .specials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    #cafe-demo .special-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s}
+    #cafe-demo .special-card img{width:100%;height:160px;object-fit:cover}
+    #cafe-demo .special-card h3{margin:12px 18px 6px;color:var(--text)}
+    #cafe-demo .special-card p{margin:0 18px 40px;color:var(--muted);font-size:14px}
+    #cafe-demo .special-card .chip{position:absolute;top:12px;right:12px;background:var(--accent);color:#032b2a;font-weight:700;padding:4px 8px;border-radius:12px}
+    #cafe-demo .special-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.15)}
+
+    /* Gallery */
+    #cafe-demo .gallery{column-count:3;column-gap:14px}
+    #cafe-demo .gallery a{display:block;margin-bottom:14px;border-radius:12px;overflow:hidden}
+    #cafe-demo .gallery img{width:100%;display:block;border-radius:12px;transition:transform .2s,box-shadow .2s}
+    #cafe-demo .gallery img:hover{transform:scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+
+    /* Reveal animations */
+    #cafe-demo .reveal{opacity:0;transform:translateY(8px);transition:opacity .6s,transform .6s}
+    #cafe-demo .reveal.visible{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){#cafe-demo .reveal{opacity:1;transform:none;transition:none;animation:none}}
+
+    /* Logo glow */
+    #cafe-demo .rw-brand svg{width:38px;height:38px;border-radius:50%;animation:logo-glow 7s ease-in-out infinite}
+    @keyframes logo-glow{0%,100%{box-shadow:0 0 0 rgba(14,165,164,0)}50%{box-shadow:0 0 12px 2px var(--glow)}}
+    @media(prefers-reduced-motion:reduce){#cafe-demo .rw-brand svg{animation:none}}
 
     /* === Hide Astra/Theme header on /cafe so only our SVG header shows === */
     .site-header,
@@ -133,6 +182,7 @@
       <nav id="rwMainNav">
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="rwLinks">☰</button>
         <div id="rwLinks" class="links">
+          <a href="/">Home</a>
           <a href="#highlights">Highlights</a>
           <a href="#menu">Menu</a>
           <a href="#visit">Visit</a>
@@ -148,15 +198,15 @@
     <div class="container inner">
       <div class="eyebrow">Local café • Fresh roast • Great vibes</div>
       <h1>Your friendly neighbourhood café — coffee, bites & community.</h1>
-      <p class="lead">A warm one‑page site for menus, hours and directions. Optimised for quick mobile viewing and easy bookings.</p>
+      <p class="lead">Menus, hours and directions at a glance. Fast to scan on mobile.</p>
       <div class="hero-cta">
         <a class="btn" href="#menu">See menu</a>
-        <a class="btn-outline" href="#contact">Catering enquiries</a>
+        <button class="btn-outline" type="button" id="orderAhead">Order ahead (coming soon)</button>
       </div>
     </div>
   </section>
 
-  <section class="panel" id="highlights">
+  <section class="panel reveal" id="highlights">
     <div class="container">
       <h2 class="section-title">Why people visit</h2>
       <p class="section-sub">Simple, quality offerings — done right.</p>
@@ -169,21 +219,113 @@
     </div>
   </section>
 
-  <section id="menu" style="background:var(--cream);color:var(--text)">
+  <section id="menu" class="reveal" style="background:var(--cream);color:var(--text)">
     <div class="container">
       <h2 class="section-title" style="color:var(--text)">Our Menu</h2>
-      <div class="menu card">
-        <div class="item"><span>Flat white</span><span class="price">$5.0</span></div>
-        <div class="item"><span>Latte</span><span class="price">$5.0</span></div>
-        <div class="item"><span>Cappuccino</span><span class="price">$5.0</span></div>
-        <div class="item"><span>Cold brew</span><span class="price">$6.0</span></div>
-        <div class="item"><span>Ham & cheese toastie</span><span class="price">$9.5</span></div>
-        <div class="item"><span>Avocado smash (GF)</span><span class="price">$12</span></div>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-coffee-btn" aria-controls="tab-coffee" aria-selected="true">Coffee</button>
+        <button class="tab" role="tab" id="tab-cold-btn" aria-controls="tab-cold" aria-selected="false">Cold</button>
+        <button class="tab" role="tab" id="tab-food-btn" aria-controls="tab-food" aria-selected="false">Food</button>
+      </div>
+      <div class="menu-panels">
+        <div id="tab-coffee" class="menu-panel active" role="tabpanel" aria-labelledby="tab-coffee-btn">
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Flat white</span><span class="note">Smooth & balanced</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$5</span>
+          </div>
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1523942839745-7848c839b661?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Latte</span><span class="note">Velvety milk</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$5</span>
+          </div>
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Cappuccino</span><span class="note">Foamy top</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$5</span>
+          </div>
+        </div>
+        <div id="tab-cold" class="menu-panel" role="tabpanel" aria-labelledby="tab-cold-btn" hidden>
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Iced latte</span><span class="note">Chilled classic</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$6</span>
+          </div>
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1532634726-8b9fb99825c7?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Cold brew</span><span class="note">Slow steeped</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$6</span>
+          </div>
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1516689890471-83e50e79a5bb?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Iced tea <span class="tag">V</span></span><span class="note">Peach or lemon</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$4.5</span>
+          </div>
+        </div>
+        <div id="tab-food" class="menu-panel" role="tabpanel" aria-labelledby="tab-food-btn" hidden>
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1604909052916-11474603e10f?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Ham & cheese toastie</span><span class="note">Toasted sourdough</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$9.5</span>
+          </div>
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1506086679525-9d6b46e4fbf3?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Avocado smash <span class="tag">GF</span></span><span class="note">Lemon & feta</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$12</span>
+          </div>
+          <div class="item">
+            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <div class="meta"><span class="name">Veggie wrap <span class="tag">V</span></span><span class="note">Roasted veg</span></div>
+            <span class="dots" aria-hidden="true"></span><span class="price">$8</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="visit" class="panel">
+  <section id="specials" class="panel reveal">
+    <div class="container">
+      <h2 class="section-title">This week’s specials</h2>
+      <div class="specials">
+        <div class="special-card reveal">
+          <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=600&auto=format&fit=crop&q=80" alt="Caramel slice" loading="lazy" decoding="async">
+          <h3>Caramel slice</h3>
+          <p>Homemade gooey caramel bar.</p>
+          <span class="chip">$4.5</span>
+        </div>
+        <div class="special-card reveal">
+          <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&auto=format&fit=crop&q=80" alt="Seasonal salad" loading="lazy" decoding="async">
+          <h3>Seasonal salad</h3>
+          <p>Fresh local greens with feta.</p>
+          <span class="chip">$9</span>
+        </div>
+        <div class="special-card reveal">
+          <img src="https://images.unsplash.com/photo-1607083206869-13e89128e414?w=600&auto=format&fit=crop&q=80" alt="Mocha deluxe" loading="lazy" decoding="async">
+          <h3>Mocha deluxe</h3>
+          <p>Rich cocoa shot with espresso.</p>
+          <span class="chip">$6</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="reveal" style="background:var(--cream);color:var(--text)">
+    <div class="container">
+      <h2 class="section-title" style="color:var(--text)">Gallery</h2>
+      <div class="gallery">
+        <a href="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=400" alt="Coffee beans" loading="lazy" decoding="async"></a>
+        <a href="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=400" alt="Latte art" loading="lazy" decoding="async"></a>
+        <a href="https://images.unsplash.com/photo-1485808191679-72a5b0ae2ed9?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1485808191679-72a5b0ae2ed9?auto=format&fit=crop&q=80&w=400" alt="Coffee setup" loading="lazy" decoding="async"></a>
+        <a href="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=400" alt="Pour over" loading="lazy" decoding="async"></a>
+        <a href="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&q=80&w=400" alt="Croissant" loading="lazy" decoding="async"></a>
+        <a href="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&q=80&w=400" alt="Cafe interior" loading="lazy" decoding="async"></a>
+        <a href="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400" alt="Outdoor seating" loading="lazy" decoding="async"></a>
+        <a href="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=400" alt="Pastries" loading="lazy" decoding="async"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="panel reveal">
     <div class="container two">
       <div class="box">
         <h3 style="margin-top:0">Hours</h3>
@@ -192,39 +334,38 @@
         <p>Beachside Parade, Aldinga SA</p>
         <p><a class="btn" href="#contact">Book or enquire</a></p>
       </div>
-<div class="map">
-  <div class="frame">
-    <iframe title="Map preview" loading="lazy" allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps?q=-35.277,138.469&z=15&output=embed"></iframe>
-  </div>
-  <div class="links">
-    <a class="btn" target="_blank" rel="noopener"
-       href="https://www.google.com/maps/dir/?api=1&destination=-35.277,138.469">Directions</a>
-    <a class="btn-outline" target="_blank" rel="noopener"
-       href="https://www.google.com/maps/@-35.277,138.469,15z">Open in Google Maps</a>
-  </div>
-</div>
-
+      <div class="map">
+        <div class="frame">
+          <iframe title="Map preview" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-35.277,138.469&z=15&output=embed"></iframe>
+        </div>
+        <div class="links">
+          <button class="btn-outline" type="button" id="copyAddr">Copy address</button>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/@-35.277,138.469,15z">Open in Maps</a>
+        </div>
+      </div>
     </div>
+    <p class="info-row">Dog-friendly • Outdoor seating • Free Wi‑Fi</p>
   </section>
-
-  <section id="contact" style="background:var(--cream);color:var(--text)">
+  <section id="contact" class="reveal" style="background:var(--cream);color:var(--text)">
     <div class="container">
       <h2 class="section-title" style="color:var(--text)">Say hello</h2>
       <p class="section-sub" style="color:var(--muted)">We’ll text you back to confirm tables or catering.</p>
-      <form onsubmit="event.preventDefault();alert('Thanks! We\'ll text you shortly.');">
+      <form id="contactForm">
         <input type="text" placeholder="Name" required>
         <input type="tel" placeholder="Phone" required>
         <input type="email" class="full" placeholder="Email (optional)">
         <textarea class="full" placeholder="Tell us what you need"></textarea>
         <button class="btn" type="submit">Request callback</button>
+        <div class="success" role="status" aria-live="polite"></div>
       </form>
+      <p class="privacy">We only use your details to respond. No spam.</p>
       <footer style="margin-top:22px;text-align:center;color:var(--muted)">
         © Coastal Bean Café • <a href="mailto:hello@coastalbeancafe.com.au">hello@coastalbeancafe.com.au</a> • <a href="tel:+61400000000">+61 400 000 000</a>
       </footer>
     </div>
   </section>
+
+
 
   <footer>
     <div class="container" style="color:#d6d3d1">Made with ☕ by RippleWorks</div>
@@ -232,11 +373,26 @@
 
   <script>
   (function(){
-    // Scroll shadow
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const head = document.head;
+    const desc = 'Coastal Bean Café in Aldinga SA — coffee, bites & community.';
+    const hero = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=1200';
+    if(!head.querySelector('meta[name="description"]')){
+      const m=document.createElement('meta');m.name='description';m.content=desc;head.appendChild(m);
+      [['og:title','Coastal Bean Café'],['og:description',desc],['og:image',hero],['twitter:card','summary_large_image'],['twitter:title','Coastal Bean Café'],['twitter:description',desc],['twitter:image',hero]].forEach(([k,v])=>{const meta=document.createElement('meta');(k.startsWith('og:')?meta.setAttribute('property',k):meta.setAttribute('name',k));meta.content=v;head.appendChild(meta);});
+      const ld=document.createElement('script');ld.type='application/ld+json';ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"LocalBusiness","name":"Coastal Bean Café","address":{"addressLocality":"Aldinga SA"},"geo":{"@type":"GeoCoordinates","latitude":-35.277,"longitude":138.469},"telephone":"+61 400 000 000"});head.appendChild(ld);
+    }
+
+    // Scroll shadow & parallax
     const header = document.querySelector('#cafe-demo #rw-topbar');
-    const onScroll = () => header && header.classList.toggle('scrolled', window.scrollY > 10);
-    document.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    const bg = document.querySelector('#cafe-demo .hero .bg');
+    const scroll = () => {
+      if(header) header.classList.toggle('scrolled', window.scrollY > 10);
+      if(bg && !reduce){ const y = Math.min(window.scrollY * 0.1, 12); bg.style.transform = `translateY(${y}px)`; }
+    };
+    document.addEventListener('scroll', scroll, {passive:true});
+    scroll();
 
     // Mobile menu toggle
     const nav = document.querySelector('#cafe-demo #rwMainNav');
@@ -251,12 +407,53 @@
       window.addEventListener('scroll', () => nav.classList.remove('open'), {passive:true});
     }
 
-    // Brand click -> scroll to top (same as homepage)
+    // Order ahead placeholder
+    document.getElementById('orderAhead')?.addEventListener('click', ()=>alert('Ordering ahead coming soon!'));
+
+    // Brand click -> scroll to top
     document.getElementById('rwBrand')?.addEventListener('click', ()=>{
       window.scrollTo({top:0, behavior:'smooth'});
       nav?.classList.remove('open');
       btn?.setAttribute('aria-expanded','false');
     });
+
+    // Menu tabs
+    const tabs = document.querySelectorAll('#cafe-demo .tab');
+    const panels = document.querySelectorAll('#cafe-demo .menu-panel');
+    function activate(tab){
+      tabs.forEach(t=>{const selected=t===tab; t.setAttribute('aria-selected',selected); t.classList.toggle('active',selected); const panel=document.getElementById(t.id.replace('-btn','')); if(panel){panel.classList.toggle('active',selected); panel.hidden=!selected;}});
+    }
+    tabs.forEach(t=>{
+      t.addEventListener('click',()=>activate(t));
+      t.addEventListener('keydown',e=>{
+        const i=[...tabs].indexOf(t);
+        if(e.key==='ArrowRight') tabs[(i+1)%tabs.length].focus();
+        if(e.key==='ArrowLeft') tabs[(i-1+tabs.length)%tabs.length].focus();
+      });
+    });
+
+    // Copy address
+    document.getElementById('copyAddr')?.addEventListener('click',()=>{
+      navigator.clipboard?.writeText('Beachside Parade, Aldinga SA');
+      alert('Address copied');
+    });
+
+    // Contact success
+    document.getElementById('contactForm')?.addEventListener('submit',e=>{
+      e.preventDefault();
+      e.target.querySelector('.success').innerHTML = '<span class="tick">✔</span> Thanks! We\'ll be in touch.';
+    });
+
+    // Intersection reveal
+    const reveals = document.querySelectorAll('#cafe-demo .reveal');
+    if(!reduce){
+      const io2 = new IntersectionObserver(entries=>{
+        entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('visible'); io2.unobserve(en.target);} });
+      },{threshold:0.2});
+      reveals.forEach(el=>io2.observe(el));
+    } else {
+      reveals.forEach(el=>el.classList.add('visible'));
+    }
 
     // Active link highlight for in-page sections
     const cafeNavLinks = document.querySelectorAll('#cafe-demo #rwMainNav a[href^="#"]');
