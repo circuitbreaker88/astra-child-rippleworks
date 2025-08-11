@@ -1,7 +1,11 @@
+# .github/workflows/gitleaks.yml
 name: gitleaks
+
 on:
   push:
-    branches: [ main ]   # only run on pushes to main (keeps it simple)
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   gitleaks:

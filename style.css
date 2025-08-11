@@ -1,24 +1,26 @@
 /*
  Theme Name: Astra Child (Rippleworks)
  Template: astra
- Version: 1.0
+ Version: 1.0.1
  Description: Child theme to deploy pages and CSS from GitHub.
  Author: Rippleworks
- GitHub Theme URI: https://github.com/OWNER/astra-child-rippleworks
-GitHub Branch: main
+ GitHub Theme URI: https://github.com/circuitbreaker88/astra-child-rippleworks
+ GitHub Branch: main
 */
 
 /* === Café page header polish (Astra) === */
-/* Target our template used by /cafe */
+/* Scope to the café template only so other pages stay unchanged */
 .page-template-page-static-partial-php .site-header {
   padding-top: 0;
   padding-bottom: 0;
-  box-shadow: none; /* keep clean */
+  box-shadow: none;
 }
+
 .page-template-page-static-partial-php .ast-primary-header-bar,
 .page-template-page-static-partial-php .ast-builder-grid-row {
-  min-height: 72px; /* consistent height */
+  min-height: 72px; /* consistent header height */
 }
+
 /* Keep the logo tidy */
 .page-template-page-static-partial-php .site-logo-img img,
 .page-template-page-static-partial-php .custom-logo {
@@ -26,34 +28,11 @@ GitHub Branch: main
   height: auto;
   width: auto;
 }
+
 /* Mobile logo sizing */
 @media (max-width: 768px) {
   .page-template-page-static-partial-php .site-logo-img img,
-  .page-template-page-static-partial-php .custom-logo { max-height: 44px; }
-}
-
-/* RippleWorks brand logo from homepage */
-.page-template-page-static-partial-php .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 900;
-  letter-spacing: .3px;
-}
-.page-template-page-static-partial-php .brand svg {
-  width: 38px;
-  height: 38px;
-}
-.page-template-page-static-partial-php .ripple circle {
-  fill: none;
-  stroke: url(#rg);
-  stroke-width: 2;
-}
-.page-template-page-static-partial-php .r1 { opacity: .8; animation: rip 2.8s linear infinite; }
-.page-template-page-static-partial-php .r2 { opacity: .5; animation: rip 2.8s linear infinite .6s; }
-.page-template-page-static-partial-php .r3 { opacity: .25; animation: rip 2.8s linear infinite 1.2s; }
-@keyframes rip {
-  0% { r: 2; stroke-opacity: .9; }
-  70% { r: 15; stroke-opacity: .25; }
-  100% { r: 18; stroke-opacity: 0; }
+  .page-template-page-static-partial-php .custom-logo {
+    max-height: 44px;
+  }
 }
