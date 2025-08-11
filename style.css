@@ -53,3 +53,27 @@
   padding-left:max(16px, env(safe-area-inset-left));
   padding-right:max(16px, env(safe-area-inset-right));
 }
+
+/* Café – center hero CTAs and button label */
+#cafe-demo .hero-cta{ justify-content:center; }
+#cafe-demo .btn,
+#cafe-demo .btn-outline{
+  justify-content:center;       /* centers label inside the button */
+  text-align:center;
+}
+
+/* Café – hide any stray loader/placeholder images that WP/plugins might inject */
+#cafe-demo img[width="0"],
+#cafe-demo img[height="0"],
+#cafe-demo img[style*="width: 0"],
+#cafe-demo img[style*="height: 0"],
+#cafe-demo #gallery img[src^="data:"],
+#cafe-demo #gallery img[src="#"],
+#cafe-demo #gallery img[src=""]{
+  display:none !important;
+}
+
+/* Café – better padding on mobile so hero text doesn’t hug the left edge */
+@media (max-width: 520px){
+  #cafe-demo .hero .inner{ padding-left: 20px; padding-right: 20px; }
+}
