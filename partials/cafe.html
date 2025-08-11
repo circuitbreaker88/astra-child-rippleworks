@@ -1,7 +1,7 @@
 <div id="cafe-demo">
   <style>
     /* Café palette: warm wood + cream, teal accent for CTAs */
-    #cafe-demo{--bg:#1b1410;--panel:#231915;--cream:#FFF7ED;--text:#2a1b13;--muted:#6b5b53;--accent:#0EA5A4;--accent-2:#d97706;--border:rgba(0,0,0,.12);--card:#ffffff;--header-h:72px;--glow:rgba(14,165,164,.35);--chip-bg:rgba(14,165,164,.12);
+    #cafe-demo{--bg:#1b1410;--panel:#231915;--cream:#F5EFE6;--ink:#2B1F16;--muted-ink:#5B4840;--accent:#0EA5A4;--accent-2:#d97706;--border:rgba(43,31,22,.12);--card:#ffffff;--header-h:72px;--glow:rgba(14,165,164,.35);--chip-bg:rgba(14,165,164,.12);--text:var(--ink);--muted:var(--muted-ink);
       background:var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans"; line-height:1.6;}
     #cafe-demo *{box-sizing:border-box}
     #cafe-demo :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -38,7 +38,7 @@
     #cafe-demo .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
     #cafe-demo .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.12);color:var(--text);transition:transform .2s,box-shadow .2s}
     #cafe-demo .card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.15)}
-    #cafe-demo .card h3{margin:6px 0 6px;color:#1f2937}
+    #cafe-demo .card h3{margin:6px 0 6px;color:var(--ink)}
 
     /* Menu grid (cream background) */
     #cafe-demo .tabs{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
@@ -58,12 +58,14 @@
 
     /* Visit / Map block */
     #cafe-demo .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    #cafe-demo .visit-card{background:var(--cream);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.12);color:var(--text);display:flex;flex-direction:column}
+    #cafe-demo .visit-card{background:var(--cream);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.12);color:var(--muted-ink);display:flex;flex-direction:column}
     #cafe-demo .visit-card .map-frame{flex:1;border-radius:12px;overflow:hidden;height:220px}
     #cafe-demo .visit-card .map-frame iframe{width:100%;height:100%;border:0}
+    #cafe-demo .visit-card h3{color:var(--ink)}
     #cafe-demo .visit-card .map-links{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-    #cafe-demo .visit-card .btn-outline{border:1px solid var(--accent);color:var(--accent)}
-    #cafe-demo .info-row{margin-top:12px;font-size:14px;color:var(--muted);text-align:center}
+    #cafe-demo .visit-card .btn-outline{background:var(--cream);border:1px solid var(--border);color:var(--ink);box-shadow:0 1px 2px rgba(43,31,22,.05)}
+    #cafe-demo .visit-card .btn-outline:hover,#cafe-demo .visit-card .btn-outline:focus-visible{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,.15);background:#ece4d8}
+    #cafe-demo .info-row{margin-top:12px;font-size:14px;color:var(--muted-ink);text-align:center}
 
     /* Footer */
     #cafe-demo footer{border-top:1px solid rgba(255,255,255,.12);padding:26px 0;color:#d6d3d1;text-align:center;background:#1b1410}
