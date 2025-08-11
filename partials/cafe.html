@@ -65,7 +65,7 @@
     #cafe-demo .visit-card .map-links{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
     #cafe-demo .visit-card .btn-outline{background:var(--cream);border:1px solid var(--border);color:var(--ink);box-shadow:0 1px 2px rgba(43,31,22,.05)}
     #cafe-demo .visit-card .btn-outline:hover,#cafe-demo .visit-card .btn-outline:focus-visible{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,.15);background:#ece4d8}
-    #cafe-demo .info-row{margin-top:12px;font-size:14px;color:var(--muted-ink);text-align:center}
+    #cafe-demo .info-row{margin-top:28px;font-size:14px;color:#e8e2d9;text-align:center}
 
     /* Footer */
     #cafe-demo footer{border-top:1px solid rgba(255,255,255,.12);padding:26px 0;color:#d6d3d1;text-align:center;background:#1b1410}
@@ -81,8 +81,9 @@
     /* Mobile */
     @media(max-width:900px){#cafe-demo .two{grid-template-columns:1fr}}
     @media(max-width:900px){#cafe-demo .gallery{column-count:2}}
-    @media(max-width:520px){#cafe-demo .container{padding:0 14px}#cafe-demo h1{font-size:34px}#cafe-demo section{padding:52px 0}}
-    @media(max-width:520px){#cafe-demo .gallery{column-count:1}}
+@media(max-width:520px){#cafe-demo .container{padding:0 14px}#cafe-demo h1{font-size:34px}#cafe-demo section{padding:52px 0}}
+@media(max-width:520px){#cafe-demo .gallery{column-count:1}}
+    @media(max-width:520px){#cafe-demo .info-row{margin-top:20px}}
 
     /* Specials */
     #cafe-demo .specials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
@@ -96,8 +97,7 @@
 
     /* Gallery */
     #cafe-demo .gallery{column-count:3;column-gap:14px}
-    #cafe-demo .gallery a{display:block;margin-bottom:14px;border-radius:12px;overflow:hidden}
-    #cafe-demo .gallery img{width:100%;display:block;border-radius:12px;transition:transform .2s,box-shadow .2s}
+    #cafe-demo .gallery img{width:100%;display:block;border-radius:12px;margin-bottom:14px;transition:transform .2s,box-shadow .2s}
     #cafe-demo .gallery img:hover{transform:scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.15)}
 
     /* Reveal animations */
@@ -324,14 +324,14 @@
     <div class="container">
       <h2 class="section-title" style="color:var(--text)">Gallery</h2>
       <div class="gallery">
-        <a href="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=400" alt="Coffee beans" loading="lazy" decoding="async"></a>
-        <a href="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=400" alt="Latte art" loading="lazy" decoding="async"></a>
-        <a href="https://images.unsplash.com/photo-1485808191679-72a5b0ae2ed9?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1485808191679-72a5b0ae2ed9?auto=format&fit=crop&q=80&w=400" alt="Coffee setup" loading="lazy" decoding="async"></a>
-        <a href="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=400" alt="Pour over" loading="lazy" decoding="async"></a>
-        <a href="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&q=80&w=400" alt="Croissant" loading="lazy" decoding="async"></a>
-        <a href="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&q=80&w=400" alt="Cafe interior" loading="lazy" decoding="async"></a>
-        <a href="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400" alt="Outdoor seating" loading="lazy" decoding="async"></a>
-        <a href="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=1200" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=400" alt="Pastries" loading="lazy" decoding="async"></a>
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=400" alt="Coffee beans" loading="lazy" decoding="async">
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=400" alt="Latte art" loading="lazy" decoding="async">
+        <img src="https://images.unsplash.com/photo-1485808191679-72a5b0ae2ed9?auto=format&fit=crop&q=80&w=400" alt="Coffee setup" loading="lazy" decoding="async">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=400" alt="Pour over" loading="lazy" decoding="async">
+        <img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&q=80&w=400" alt="Croissant" loading="lazy" decoding="async">
+        <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&q=80&w=400" alt="Cafe interior" loading="lazy" decoding="async">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400" alt="Outdoor seating" loading="lazy" decoding="async">
+        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=400" alt="Pastries" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -370,7 +370,7 @@
         <div class="success" role="status" aria-live="polite"></div>
       </form>
       <p class="privacy">We only use your details to respond. No spam.</p>
-      <footer style="margin-top:22px;text-align:center;color:var(--muted)">
+      <footer style="margin-top:22px;text-align:center;color:#e8e2d9">
         © Coastal Bean Café • <a href="mailto:hello@coastalbeancafe.com.au">hello@coastalbeancafe.com.au</a> • <a href="tel:+61400000000">+61 400 000 000</a>
       </footer>
     </div>

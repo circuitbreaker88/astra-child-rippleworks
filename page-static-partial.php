@@ -59,4 +59,4 @@ if ( $partial_path && strpos( $partial_path, $partials_dir ) === 0 && file_exist
 }
 echo '</main>';
 
-get_footer();
+get_footer( 'cafe' );
