@@ -11,16 +11,13 @@
     #cafe-demo .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--accent),#14b8a6);color:#032b2a;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 8px 20px rgba(20,184,166,.25)}
     #cafe-demo .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
 
-    /* Header */
-    #cafe-demo header.site{position:sticky;top:0;z-index:20;background:rgba(27,20,16,.65);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
-    #cafe-demo .nav{display:flex;align-items:center;justify-content:space-between;height:64px;color:#fff}
-    #cafe-demo .brand{display:flex;gap:10px;align-items:center;font-weight:900}
+    
 
     /* Hero with background image */
     #cafe-demo .hero{position:relative;color:#fff}
     #cafe-demo .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;filter:saturate(1.05)}
     #cafe-demo .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,16,.55),rgba(27,20,16,.78))}
-    #cafe-demo .hero .inner{position:relative;padding:88px 0 60px}
+    #cafe-demo .hero .inner{position:relative;padding:120px 0 60px}
     #cafe-demo .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:#a7f3d0;font-weight:800}
     #cafe-demo h1{font-family:"Playfair Display",Georgia,serif;font-size:44px;line-height:1.08;margin:10px 0 12px}
     #cafe-demo .lead{max-width:60ch;color:#e7f2fb}
@@ -59,13 +56,6 @@
     @media(max-width:900px){#cafe-demo .two{grid-template-columns:1fr}}
     @media(max-width:520px){#cafe-demo .container{padding:0 14px}#cafe-demo h1{font-size:34px}#cafe-demo section{padding:52px 0}}
   </style>
-
-  <header class="site">
-    <div class="container nav">
-      <div class="brand">☕ Coastal Bean Café</div>
-      <div><a class="btn-outline" href="#contact">Book a table</a></div>
-    </div>
-  </header>
 
   <section class="hero" style="background:#1b1410">
     <div class="bg" aria-hidden="true"></div>
