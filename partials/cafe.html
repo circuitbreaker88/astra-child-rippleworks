@@ -100,7 +100,12 @@
     #cafe-demo .gallery img{width:100%;display:block;border-radius:12px;margin-bottom:14px;transition:transform .2s,box-shadow .2s}
     #cafe-demo .gallery img:hover{transform:scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.15)}
 
-    /* Prevent captions or alt text from showing under gallery images */
+    /* Remove stray captions or broken images under gallery */
+    #cafe-demo #gallery>p,
+    #cafe-demo #gallery img[src=""],
+    #cafe-demo #gallery img[src="#"],
+    #cafe-demo #gallery img[src="undefined"],
+    #cafe-demo #gallery img:not([src]){display:none !important}
     #cafe-demo .gallery img::before,
     #cafe-demo .gallery img::after{content:none !important}
     #cafe-demo .gallery figcaption,
@@ -396,16 +401,12 @@
       const gallery = document.querySelector('#cafe-demo #gallery');
       if (gallery) {
         gallery.querySelectorAll('img').forEach(img => {
-          const src = img.getAttribute('src');
-          if (!src || src.trim() === '') {
+          const src = (img.getAttribute('src') || '').trim();
+          if (!src || src === '#' || src === 'undefined') {
             img.remove();
           }
         });
-        gallery.querySelectorAll('figcaption,p,span').forEach(cap => {
-          if (/coffee setup/i.test(cap.textContent)) {
-            cap.remove();
-          }
-        });
+        gallery.querySelectorAll('figcaption,p,span').forEach(cap => cap.remove());
       }
 
       const head = document.head;
