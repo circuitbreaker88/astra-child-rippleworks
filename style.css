@@ -5,5 +5,29 @@
  Description: Child theme to deploy pages and CSS from GitHub.
  Author: Rippleworks
  GitHub Theme URI: https://github.com/OWNER/astra-child-rippleworks
- GitHub Branch: main
+GitHub Branch: main
 */
+
+/* === Café page header polish (Astra) === */
+/* Target our template used by /cafe */
+.page-template-page-static-partial-php .site-header {
+  padding-top: 0;
+  padding-bottom: 0;
+  box-shadow: none; /* keep clean */
+}
+.page-template-page-static-partial-php .ast-primary-header-bar,
+.page-template-page-static-partial-php .ast-builder-grid-row {
+  min-height: 72px; /* consistent height */
+}
+/* Keep the logo tidy */
+.page-template-page-static-partial-php .site-logo-img img,
+.page-template-page-static-partial-php .custom-logo {
+  max-height: 56px;
+  height: auto;
+  width: auto;
+}
+/* Mobile logo sizing */
+@media (max-width: 768px) {
+  .page-template-page-static-partial-php .site-logo-img img,
+  .page-template-page-static-partial-php .custom-logo { max-height: 44px; }
+}
