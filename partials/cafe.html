@@ -56,35 +56,39 @@
     @media(max-width:900px){#cafe-demo .two{grid-template-columns:1fr}}
     @media(max-width:520px){#cafe-demo .container{padding:0 14px}#cafe-demo h1{font-size:34px}#cafe-demo section{padding:52px 0}}
 
-    /* Hide the WordPress theme header on THIS page to avoid duplicate logo/header */
-    .site-header, header.site-main, .ast-desktop .ast-header-break-point .main-header-bar {
+    /* === Hide Astra/Theme header on /cafe so only our SVG header shows === */
+    .site-header,
+    .main-header-bar,
+    .ast-desktop .main-header-bar,
+    .ast-mobile-header-wrap {
       display: none !important;
     }
 
-    /* Make space for the fixed RippleWorks header we’re adding */
-    #cafe-demo { padding-top: var(--header-h); }
+    /* === Space for our fixed header === */
+    #cafe-demo { padding-top: 72px; }
 
-    /* RippleWorks header styles (scoped so they don't leak) */
-    #cafe-demo header.site{
+    /* === RippleWorks header styling (copied from homepage, scoped) === */
+    #cafe-demo .rw-site{
       position:fixed; top:0; left:0; right:0; z-index:1000;
       backdrop-filter:blur(10px);
       background:linear-gradient(180deg, rgba(13,27,42,.85) 0%, rgba(13,27,42,.65) 100%);
       border-bottom:1px solid rgba(255,255,255,.10);
+      transition:background .2s ease, box-shadow .2s ease;
     }
-    #cafe-demo header.site.scrolled{ background:rgba(13,27,42,.92); box-shadow:0 8px 24px rgba(0,0,0,.25) }
-    #cafe-demo .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-    #cafe-demo .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.3px;cursor:pointer;color:#E7F2FB}
-    #cafe-demo .brand svg{width:38px;height:38px}
+    #cafe-demo .rw-site.scrolled{background:rgba(13,27,42,.92);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    #cafe-demo .rw-nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    #cafe-demo .rw-brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.3px;cursor:pointer;color:#E7F2FB}
+    #cafe-demo .rw-brand svg{width:38px;height:38px}
     #cafe-demo .ripple circle{fill:none;stroke:url(#rg);stroke-width:2}
     #cafe-demo .r1{opacity:.8;animation:rw-rip 2.8s linear infinite}
     #cafe-demo .r2{opacity:.5;animation:rw-rip 2.8s linear infinite .6s}
     #cafe-demo .r3{opacity:.25;animation:rw-rip 2.8s linear infinite 1.2s}
     @keyframes rw-rip{0%{r:2;stroke-opacity:.9}70%{r:15;stroke-opacity:.25}100%{r:18;stroke-opacity:0}}
 
-    #cafe-demo #mainNav .links{display:flex;align-items:center}
-    #cafe-demo #mainNav .links a{opacity:.9;margin-left:20px;font-weight:700;position:relative;color:#E7F2FB}
-    #cafe-demo #mainNav .links a:first-child{margin-left:0}
-    #cafe-demo #mainNav .links a.active:after{
+    #cafe-demo #rwMainNav .links{display:flex;align-items:center}
+    #cafe-demo #rwMainNav .links a{opacity:.9;margin-left:20px;font-weight:700;position:relative;color:#E7F2FB}
+    #cafe-demo #rwMainNav .links a:first-child{margin-left:0}
+    #cafe-demo #rwMainNav .links a.active:after{
       content:"";position:absolute;left:0;right:0;bottom:-10px;height:2px;
       background:linear-gradient(90deg,#00B8A9,#14B8A6);border-radius:2px
     }
@@ -92,28 +96,27 @@
 
     /* Mobile header/menu */
     @media (max-width: 900px){
-      #cafe-demo :root{ --header-h: 64px }
-      #cafe-demo .nav{height:64px}
-      #cafe-demo .brand svg{width:28px;height:28px}
-      #cafe-demo #mainNav{position:relative;display:flex;align-items:center;gap:10px}
+      #cafe-demo .rw-nav{height:64px}
+      #cafe-demo .rw-brand svg{width:28px;height:28px}
+      #cafe-demo #rwMainNav{position:relative;display:flex;align-items:center;gap:10px}
       #cafe-demo .menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:#E7F2FB;font-weight:900}
-      #cafe-demo #mainNav .links{
+      #cafe-demo #rwMainNav .links{
         position:absolute;right:0;top:64px;display:none;flex-direction:column;gap:10px;
         background:linear-gradient(180deg, rgba(13,27,42,.98) 0%, rgba(13,27,42,.94) 100%);
         border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:12px;min-width:200px;z-index:1002;
         box-shadow:0 18px 40px rgba(0,0,0,.35)
       }
-      #cafe-demo #mainNav.open .links{display:flex}
-      #cafe-demo #mainNav .links a{margin:0;padding:10px 12px;border-radius:10px}
-      #cafe-demo #mainNav .links a.active:after{display:none}
+      #cafe-demo #rwMainNav.open .links{display:flex}
+      #cafe-demo #rwMainNav .links a{margin:0;padding:10px 12px;border-radius:10px}
+      #cafe-demo #rwMainNav .links a.active:after{display:none}
     }
   </style>
 
-  <!-- RippleWorks header (copied from homepage) -->
-  <header class="site" id="topbar">
-    <div class="container nav">
-      <div class="brand" id="rwBrand">
-        <!-- Ripple logo (animated) -->
+  <!-- === RippleWorks header (same as homepage) === -->
+  <header class="rw-site" id="rw-topbar">
+    <div class="container rw-nav">
+      <div class="rw-brand" id="rwBrand">
+        <!-- Animated ripple SVG -->
         <svg class="ripple" viewBox="0 0 40 40" aria-hidden="true">
           <defs>
             <radialGradient id="rg" cx="50%" cy="50%">
@@ -127,10 +130,9 @@
         </svg>
         RippleWorks
       </div>
-      <nav id="mainNav">
-        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
-        <div id="navLinks" class="links">
-          <!-- Link to café sections -->
+      <nav id="rwMainNav">
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="rwLinks">☰</button>
+        <div id="rwLinks" class="links">
           <a href="#highlights">Highlights</a>
           <a href="#menu">Menu</a>
           <a href="#visit">Visit</a>
@@ -229,52 +231,52 @@
   </footer>
 
   <script>
-    (function(){
-      // Shadow/opacity on scroll
-      const header = document.querySelector('#cafe-demo #topbar');
-      const onScroll = () => header && header.classList.toggle('scrolled', window.scrollY > 10);
-      document.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+  (function(){
+    // Scroll shadow
+    const header = document.querySelector('#cafe-demo #rw-topbar');
+    const onScroll = () => header && header.classList.toggle('scrolled', window.scrollY > 10);
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-      // Mobile menu toggle
-      const nav = document.querySelector('#cafe-demo #mainNav');
-      const btn = nav?.querySelector('.menu-toggle');
-      const links = nav?.querySelectorAll('.links a');
-      if (btn && nav) {
-        btn.addEventListener('click', ()=>{
-          const open = nav.classList.toggle('open');
-          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-        links?.forEach(a=>a.addEventListener('click', ()=>nav.classList.remove('open')));
-        window.addEventListener('scroll', ()=>nav.classList.remove('open'), {passive:true});
-      }
-
-      // Brand click -> scroll to top
-      document.getElementById('rwBrand')?.addEventListener('click', ()=>{
-        window.scrollTo({top:0, behavior:'smooth'});
-        nav?.classList.remove('open');
-        btn?.setAttribute('aria-expanded','false');
+    // Mobile menu toggle
+    const nav = document.querySelector('#cafe-demo #rwMainNav');
+    const btn = nav?.querySelector('.menu-toggle');
+    const links = nav?.querySelectorAll('.links a');
+    if (btn && nav) {
+      btn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
+      links?.forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+      window.addEventListener('scroll', () => nav.classList.remove('open'), {passive:true});
+    }
 
-      // Active link highlight for café sections
-      const cafeNavLinks = document.querySelectorAll('#cafe-demo #mainNav a[href^="#"]');
-      const map = new Map();
-      cafeNavLinks.forEach(a => {
-        const id = a.getAttribute('href').slice(1);
-        const sec = document.getElementById(id);
-        if (sec) map.set(sec, a);
+    // Brand click -> scroll to top (same as homepage)
+    document.getElementById('rwBrand')?.addEventListener('click', ()=>{
+      window.scrollTo({top:0, behavior:'smooth'});
+      nav?.classList.remove('open');
+      btn?.setAttribute('aria-expanded','false');
+    });
+
+    // Active link highlight for in-page sections
+    const cafeNavLinks = document.querySelectorAll('#cafe-demo #rwMainNav a[href^="#"]');
+    const map = new Map();
+    cafeNavLinks.forEach(a => {
+      const id = a.getAttribute('href').slice(1);
+      const sec = document.getElementById(id);
+      if (sec) map.set(sec, a);
+    });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const link = map.get(e.target);
+        if (!link) return;
+        if (e.isIntersecting) {
+          cafeNavLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
       });
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          const link = map.get(e.target);
-          if (!link) return;
-          if (e.isIntersecting) {
-            cafeNavLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-          }
-        });
-      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-      map.forEach((_, sec) => io.observe(sec));
-    })();
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    map.forEach((_, sec) => io.observe(sec));
+  })();
   </script>
 </div>
