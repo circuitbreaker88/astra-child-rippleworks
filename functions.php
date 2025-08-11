@@ -8,7 +8,7 @@ add_action('wp_enqueue_scripts', function () {
         'astra-child',
         get_stylesheet_uri(),
         ['astra-parent'],
-        wp_get_theme()->get('Version')
+        filemtime( get_stylesheet_directory() . '/style.css' )
     );
 });
 
