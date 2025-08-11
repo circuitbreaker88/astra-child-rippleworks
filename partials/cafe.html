@@ -1,0 +1,157 @@
+<div id="cafe-demo">
+  <style>
+    /* Café palette: warm wood + cream, teal accent for CTAs */
+    #cafe-demo{--bg:#1b1410;--panel:#231915;--cream:#FFF7ED;--text:#2a1b13;--muted:#6b5b53;--accent:#0EA5A4;--accent-2:#d97706;--border:rgba(0,0,0,.12);--card:#ffffff;--header-h:72px;
+      background:var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans"; line-height:1.6;}
+    #cafe-demo *{box-sizing:border-box}
+    #cafe-demo a{color:inherit;text-decoration:none}
+    #cafe-demo .container{max-width:1040px;margin:0 auto;padding:0 20px}
+
+    /* Buttons */
+    #cafe-demo .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--accent),#14b8a6);color:#032b2a;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 8px 20px rgba(20,184,166,.25)}
+    #cafe-demo .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+
+    /* Header */
+    #cafe-demo header.site{position:sticky;top:0;z-index:20;background:rgba(27,20,16,.65);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+    #cafe-demo .nav{display:flex;align-items:center;justify-content:space-between;height:64px;color:#fff}
+    #cafe-demo .brand{display:flex;gap:10px;align-items:center;font-weight:900}
+
+    /* Hero with background image */
+    #cafe-demo .hero{position:relative;color:#fff}
+    #cafe-demo .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;filter:saturate(1.05)}
+    #cafe-demo .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,16,.55),rgba(27,20,16,.78))}
+    #cafe-demo .hero .inner{position:relative;padding:88px 0 60px}
+    #cafe-demo .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:#a7f3d0;font-weight:800}
+    #cafe-demo h1{font-family:"Playfair Display",Georgia,serif;font-size:44px;line-height:1.08;margin:10px 0 12px}
+    #cafe-demo .lead{max-width:60ch;color:#e7f2fb}
+    #cafe-demo .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+    /* Sections */
+    #cafe-demo section{padding:64px 0}
+    #cafe-demo .section-title{font-family:"Playfair Display",Georgia,serif;font-size:32px;margin:0 0 10px;color:var(--cream)}
+    #cafe-demo .section-sub{color:#d1ccc7;margin-bottom:22px}
+
+    /* Dark panel section */
+    #cafe-demo .panel{background:linear-gradient(180deg,#2a201b,#1e1713);padding:48px 0;color:#efeae6}
+    #cafe-demo .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    #cafe-demo .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.12);color:var(--text)}
+    #cafe-demo .card h3{margin:6px 0 6px;color:#1f2937}
+
+    /* Menu grid (cream background) */
+    #cafe-demo .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    #cafe-demo .item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed rgba(0,0,0,.15);padding:10px 0}
+    #cafe-demo .price{font-weight:800;color:#0f766e}
+
+    /* Hours / Contact block */
+    #cafe-demo .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    #cafe-demo .box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--text)}
+    #cafe-demo .map{height:260px;border-radius:12px;background:linear-gradient(180deg,#e5e7eb,#d1d5db);display:grid;place-items:center;color:#475569;border:1px solid #cbd5e1}
+
+    /* Footer */
+    #cafe-demo footer{border-top:1px solid rgba(255,255,255,.12);padding:26px 0;color:#d6d3d1;text-align:center;background:#1b1410}
+
+    /* Form */
+    #cafe-demo form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    #cafe-demo form .full{grid-column:1/-1}
+    #cafe-demo input,#cafe-demo textarea{width:100%;background:#0b1426;color:#E7F2FB;border:1px solid rgba(255,255,255,.15);padding:12px;border-radius:10px}
+
+    /* Mobile */
+    @media(max-width:900px){#cafe-demo .two{grid-template-columns:1fr}}
+    @media(max-width:520px){#cafe-demo .container{padding:0 14px}#cafe-demo h1{font-size:34px}#cafe-demo section{padding:52px 0}}
+  </style>
+
+  <header class="site">
+    <div class="container nav">
+      <div class="brand">☕ Coastal Bean Café</div>
+      <div><a class="btn-outline" href="#contact">Book a table</a></div>
+    </div>
+  </header>
+
+  <section class="hero" style="background:#1b1410">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="container inner">
+      <div class="eyebrow">Local café • Fresh roast • Great vibes</div>
+      <h1>Your friendly neighbourhood café — coffee, bites & community.</h1>
+      <p class="lead">A warm one‑page site for menus, hours and directions. Optimised for quick mobile viewing and easy bookings.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#menu">See menu</a>
+        <a class="btn-outline" href="#contact">Catering enquiries</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="highlights">
+    <div class="container">
+      <h2 class="section-title">Why people visit</h2>
+      <p class="section-sub">Simple, quality offerings — done right.</p>
+      <div class="cards">
+        <div class="card"><h3>Signature roasts</h3><p>House blend & rotating single‑origin beans.</p></div>
+        <div class="card"><h3>Fresh bakes</h3><p>Croissants, toasties and gluten‑free treats daily.</p></div>
+        <div class="card"><h3>Sunny courtyard</h3><p>Dog‑friendly outdoor seating near the beach.</p></div>
+        <div class="card"><h3>Local love</h3><p>We source from SA roasters and bakers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" style="background:var(--cream);color:var(--text)">
+    <div class="container">
+      <h2 class="section-title" style="color:var(--text)">Menu highlights</h2>
+      <div class="menu card">
+        <div class="item"><span>Flat white</span><span class="price">$5.0</span></div>
+        <div class="item"><span>Latte</span><span class="price">$5.0</span></div>
+        <div class="item"><span>Cappuccino</span><span class="price">$5.0</span></div>
+        <div class="item"><span>Cold brew</span><span class="price">$6.0</span></div>
+        <div class="item"><span>Ham & cheese toastie</span><span class="price">$9.5</span></div>
+        <div class="item"><span>Avocado smash (GF)</span><span class="price">$12</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="panel">
+    <div class="container two">
+      <div class="box">
+        <h3 style="margin-top:0">Hours</h3>
+        <p>Mon–Fri: 7:00 – 15:00<br>Sat–Sun: 7:00 – 14:00</p>
+        <h3>Location</h3>
+        <p>Beachside Parade, Aldinga SA</p>
+        <p><a class="btn" href="#contact">Book or enquire</a></p>
+      </div>
+<div class="map">
+  <div class="frame">
+    <iframe title="Map preview" loading="lazy" allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=-35.277,138.469&z=15&output=embed"></iframe>
+  </div>
+  <div class="links">
+    <a class="btn" target="_blank" rel="noopener"
+       href="https://www.google.com/maps/dir/?api=1&destination=-35.277,138.469">Directions</a>
+    <a class="btn-outline" target="_blank" rel="noopener"
+       href="https://www.google.com/maps/@-35.277,138.469,15z">Open in Google Maps</a>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <section id="contact" style="background:var(--cream);color:var(--text)">
+    <div class="container">
+      <h2 class="section-title" style="color:var(--text)">Say hello</h2>
+      <p class="section-sub" style="color:var(--muted)">We’ll text you back to confirm tables or catering.</p>
+      <form onsubmit="event.preventDefault();alert('Thanks! We\'ll text you shortly.');">
+        <input type="text" placeholder="Name" required>
+        <input type="tel" placeholder="Phone" required>
+        <input type="email" class="full" placeholder="Email (optional)">
+        <textarea class="full" placeholder="Tell us what you need"></textarea>
+        <button class="btn" type="submit">Request callback</button>
+      </form>
+      <footer style="margin-top:22px;text-align:center;color:var(--muted)">
+        © Coastal Bean Café • <a href="mailto:hello@coastalbeancafe.com.au">hello@coastalbeancafe.com.au</a> • <a href="tel:+61400000000">+61 400 000 000</a>
+      </footer>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="color:#d6d3d1">Made with ☕ by RippleWorks</div>
+  </footer>
+</div>
