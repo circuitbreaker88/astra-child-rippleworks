@@ -56,11 +56,13 @@
     #cafe-demo .menu-panel .price{font-weight:700;color:#0f766e}
     #cafe-demo .tag{background:var(--chip-bg);color:var(--accent);font-size:11px;padding:0 4px;border-radius:4px;margin-left:4px}
 
-    /* Hours / Contact block */
+    /* Visit / Map block */
     #cafe-demo .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    #cafe-demo .box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;color:var(--text)}
-    #cafe-demo .map{height:260px;border-radius:12px;background:linear-gradient(180deg,#e5e7eb,#d1d5db);display:grid;place-items:center;color:#475569;border:1px solid #cbd5e1}
-    #cafe-demo .map .links{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    #cafe-demo .visit-card{background:var(--cream);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.12);color:var(--text);display:flex;flex-direction:column}
+    #cafe-demo .visit-card .map-frame{flex:1;border-radius:12px;overflow:hidden;height:220px}
+    #cafe-demo .visit-card .map-frame iframe{width:100%;height:100%;border:0}
+    #cafe-demo .visit-card .map-links{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    #cafe-demo .visit-card .btn-outline{border:1px solid var(--accent);color:var(--accent)}
     #cafe-demo .info-row{margin-top:12px;font-size:14px;color:var(--muted);text-align:center}
 
     /* Footer */
@@ -116,15 +118,15 @@
     /* === Space for our fixed header === */
     #cafe-demo { padding-top: 72px; }
 
-    /* === RippleWorks header styling (copied from homepage, scoped) === */
+    /* === Café header styling === */
     #cafe-demo .rw-site{
       position:fixed; top:0; left:0; right:0; z-index:1000;
       backdrop-filter:blur(10px);
-      background:linear-gradient(180deg, rgba(13,27,42,.85) 0%, rgba(13,27,42,.65) 100%);
+      background:linear-gradient(180deg, rgba(35,25,21,.85) 0%, rgba(27,20,16,.65) 100%);
       border-bottom:1px solid rgba(255,255,255,.10);
       transition:background .2s ease, box-shadow .2s ease;
     }
-    #cafe-demo .rw-site.scrolled{background:rgba(13,27,42,.92);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    #cafe-demo .rw-site.scrolled{background:rgba(27,20,16,.92);box-shadow:0 8px 24px rgba(0,0,0,.25)}
     #cafe-demo .rw-nav{display:flex;align-items:center;justify-content:space-between;height:72px}
     #cafe-demo .rw-brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.3px;cursor:pointer;color:#E7F2FB}
     #cafe-demo .rw-brand svg{width:38px;height:38px}
@@ -139,7 +141,7 @@
     #cafe-demo #rwMainNav .links a:first-child{margin-left:0}
     #cafe-demo #rwMainNav .links a.active:after{
       content:"";position:absolute;left:0;right:0;bottom:-10px;height:2px;
-      background:linear-gradient(90deg,#00B8A9,#14B8A6);border-radius:2px
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:2px
     }
     #cafe-demo .menu-toggle{display:none}
 
@@ -161,10 +163,10 @@
     }
   </style>
 
-  <!-- === RippleWorks header (same as homepage) === -->
+  <!-- === Café header === -->
   <header class="rw-site" id="rw-topbar">
     <div class="container rw-nav">
-      <div class="rw-brand" id="rwBrand">
+      <a class="rw-brand" id="rwBrand" href="/">
         <!-- Animated ripple SVG -->
         <svg class="ripple" viewBox="0 0 40 40" aria-hidden="true">
           <defs>
@@ -177,8 +179,8 @@
           <circle class="r2" cx="20" cy="20" r="2"></circle>
           <circle class="r3" cx="20" cy="20" r="2"></circle>
         </svg>
-        RippleWorks
-      </div>
+        Home
+      </a>
       <nav id="rwMainNav">
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="rwLinks">☰</button>
         <div id="rwLinks" class="links">
@@ -327,20 +329,20 @@
 
   <section id="visit" class="panel reveal">
     <div class="container two">
-      <div class="box">
+      <div class="visit-card">
         <h3 style="margin-top:0">Hours</h3>
         <p>Mon–Fri: 7:00 – 15:00<br>Sat–Sun: 7:00 – 14:00</p>
         <h3>Location</h3>
         <p>Beachside Parade, Aldinga SA</p>
         <p><a class="btn" href="#contact">Book or enquire</a></p>
       </div>
-      <div class="map">
-        <div class="frame">
+      <div class="visit-card">
+        <div class="map-frame">
           <iframe title="Map preview" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-35.277,138.469&z=15&output=embed"></iframe>
         </div>
-        <div class="links">
+        <div class="map-links">
           <button class="btn-outline" type="button" id="copyAddr">Copy address</button>
-          <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/@-35.277,138.469,15z">Open in Maps</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=-35.277,138.469">Open in Maps</a>
         </div>
       </div>
     </div>
@@ -348,7 +350,7 @@
   </section>
   <section id="contact" class="reveal" style="background:var(--cream);color:var(--text)">
     <div class="container">
-      <h2 class="section-title" style="color:var(--text)">Say hello</h2>
+      <h2 class="section-title" style="color:var(--text)">Say Hello!</h2>
       <p class="section-sub" style="color:var(--muted)">We’ll text you back to confirm tables or catering.</p>
       <form id="contactForm">
         <input type="text" placeholder="Name" required>
@@ -403,19 +405,26 @@
         const open = nav.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-      links?.forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
       window.addEventListener('scroll', () => nav.classList.remove('open'), {passive:true});
     }
+    links?.forEach(a => {
+      a.addEventListener('click', e => {
+        nav?.classList.remove('open');
+        btn?.setAttribute('aria-expanded','false');
+        if (a.hash) {
+          const id = a.hash.slice(1);
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            const y = target.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({top:y, behavior:'smooth'});
+          }
+        }
+      });
+    });
 
     // Order ahead placeholder
     document.getElementById('orderAhead')?.addEventListener('click', ()=>alert('Ordering ahead coming soon!'));
-
-    // Brand click -> scroll to top
-    document.getElementById('rwBrand')?.addEventListener('click', ()=>{
-      window.scrollTo({top:0, behavior:'smooth'});
-      nav?.classList.remove('open');
-      btn?.setAttribute('aria-expanded','false');
-    });
 
     // Menu tabs
     const tabs = document.querySelectorAll('#cafe-demo .tab');
