@@ -5,6 +5,8 @@ Description: Outputs an HTML file from /partials/{page-slug}.html inside Astra h
 */
 get_header();
 
+echo "<!-- Template: page-static-partial.php -->\n";
+
 $slug = sanitize_file_name( get_post_field( 'post_name', get_post() ) );
 
 $partials_dir = realpath( get_stylesheet_directory() . '/partials' );
