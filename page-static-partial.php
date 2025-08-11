@@ -48,6 +48,11 @@ if ( $partial_path && strpos( $partial_path, $partials_dir ) === 0 && file_exist
         'src' => true,
         'style' => true,
     );
+    $allowed_html['script'] = array(
+        'type'  => true,
+        'src'   => true,
+        'defer' => true,
+    );
     echo wp_kses( $content, $allowed_html );
 } else {
     echo '<p style="padding:2rem">Partial not found: ' . esc_html( basename( $slug . '.html' ) ) . '</p>';
