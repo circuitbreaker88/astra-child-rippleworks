@@ -1,24 +1,26 @@
 /*
  Theme Name: Astra Child (Rippleworks)
  Template: astra
- Version: 1.0
+ Version: 1.0.1
  Description: Child theme to deploy pages and CSS from GitHub.
  Author: Rippleworks
- GitHub Theme URI: https://github.com/OWNER/astra-child-rippleworks
-GitHub Branch: main
+ GitHub Theme URI: https://github.com/circuitbreaker88/astra-child-rippleworks
+ GitHub Branch: main
 */
 
 /* === Café page header polish (Astra) === */
-/* Target our template used by /cafe */
+/* Scope to the café template only so other pages stay unchanged */
 .page-template-page-static-partial-php .site-header {
   padding-top: 0;
   padding-bottom: 0;
-  box-shadow: none; /* keep clean */
+  box-shadow: none;
 }
+
 .page-template-page-static-partial-php .ast-primary-header-bar,
 .page-template-page-static-partial-php .ast-builder-grid-row {
-  min-height: 72px; /* consistent height */
+  min-height: 72px; /* consistent header height */
 }
+
 /* Keep the logo tidy */
 .page-template-page-static-partial-php .site-logo-img img,
 .page-template-page-static-partial-php .custom-logo {
@@ -26,8 +28,11 @@ GitHub Branch: main
   height: auto;
   width: auto;
 }
+
 /* Mobile logo sizing */
 @media (max-width: 768px) {
   .page-template-page-static-partial-php .site-logo-img img,
-  .page-template-page-static-partial-php .custom-logo { max-height: 44px; }
+  .page-template-page-static-partial-php .custom-logo {
+    max-height: 44px;
+  }
 }
