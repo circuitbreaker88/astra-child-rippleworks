@@ -20,23 +20,24 @@
     #cafe-demo .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;transition:transform .2s,box-shadow .2s}
     #cafe-demo .btn:hover,#cafe-demo .btn:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,184,166,.35)}
     #cafe-demo .btn-outline:hover,#cafe-demo .btn-outline:focus-visible{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,.3)}
+    #cafe-demo .btn,#cafe-demo .btn-outline,#cafe-demo .menu-toggle,#cafe-demo #rwMainNav .links a{min-height:44px}
 
     
 
     /* Hero with background image */
     /* Ensure the hero always has visible height on mobile */
     #cafe-demo .hero{position:relative;color:#fff;min-height:72vh}
-    #cafe-demo .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;filter:saturate(1.05);will-change:transform}
+    #cafe-demo .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;filter:saturate(1.05);will-change:transform;content-visibility:auto}
     #cafe-demo .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,16,.55),rgba(27,20,16,.78))}
     #cafe-demo .hero .inner{position:relative;padding:96px 0 44px}
     #cafe-demo .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:#a7f3d0;font-weight:800}
-    #cafe-demo h1{font-family:"Playfair Display",Georgia,serif;font-size:44px;line-height:1.08;margin:10px 0 12px}
-    #cafe-demo .lead{max-width:60ch;color:#e7f2fb}
+    #cafe-demo h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(28px,7vw,44px);line-height:1.08;margin:10px 0 12px;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+    #cafe-demo .lead{max-width:60ch;color:#e7f2fb;text-shadow:0 1px 12px rgba(0,0,0,.35)}
     #cafe-demo .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
 
     /* Sections */
     #cafe-demo section{padding:64px 0}
-    #cafe-demo .section-title{font-family:"Playfair Display",Georgia,serif;font-size:32px;margin:0 0 10px;color:var(--cream);position:relative}
+    #cafe-demo .section-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(20px,5vw,32px);margin:0 0 10px;color:var(--cream);position:relative}
     #cafe-demo .section-title::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left;transition:transform .3s}
     #cafe-demo .section-title:hover::after{transform:scaleX(1)}
     #cafe-demo .section-sub{color:#d1ccc7;margin-bottom:22px}
@@ -75,7 +76,9 @@
     #cafe-demo .visit-card .btn-outline:hover,#cafe-demo .visit-card .btn-outline:focus-visible{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,.15);background:#ece4d8}
 
     /* Footer */
-    #cafe-demo footer{border-top:1px solid rgba(255,255,255,.12);padding:26px 0;color:#d6d3d1;text-align:center;background:#1b1410}
+    #cafe-demo footer{border-top:1px solid rgba(255,255,255,.12);padding:26px 0;color:#EEE7DE;text-align:center;background:#1b1410}
+    #cafe-demo footer a:hover{color:#BFF0E5}
+    #cafe-demo + footer{display:none}
 
     /* Form */
     #cafe-demo form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -88,24 +91,25 @@
     /* Mobile */
     @media(max-width:900px){#cafe-demo .two{grid-template-columns:1fr}}
     @media(max-width:900px){#cafe-demo .gallery{column-count:2}}
-@media(max-width:520px){#cafe-demo .container{padding:0 16px}#cafe-demo h1{font-size:32px}#cafe-demo .lead{font-size:16px}#cafe-demo .hero-cta{flex-direction:column;align-items:stretch}#cafe-demo section{padding:52px 0}}
-    @media(max-width:520px){#cafe-demo .info-row{margin-top:24px}}
-    @media (max-width:600px){#cafe-demo .specials{grid-template-columns:1fr}#cafe-demo .special-card .media{height:220px}#cafe-demo .gallery{column-count:2}}
+@media(max-width:520px){#cafe-demo .container{padding:0 16px}#cafe-demo .lead{font-size:16px}#cafe-demo .hero-cta{flex-direction:column;align-items:stretch}#cafe-demo section{padding:52px 0}#cafe-demo .hero .inner{padding:80px 0 40px}}
+    @media (max-width:600px){#cafe-demo .specials{grid-template-columns:1fr}#cafe-demo .gallery{column-count:2}}
     @media (max-width:380px){#cafe-demo .gallery{column-count:1}}
+    @media (max-width:420px){#cafe-demo .visit-card .map-links{flex-direction:column}}
 
     /* Specials */
     #cafe-demo .specials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     #cafe-demo .special-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.12);transition:transform .2s,box-shadow .2s}
-    #cafe-demo .special-card .media{position:relative;height:160px}
+    #cafe-demo .special-card .media{position:relative;aspect-ratio:16/9;height:auto}
     #cafe-demo .special-card .media img{width:100%;height:100%;object-fit:cover}
     #cafe-demo .special-card h3{margin:12px 18px 6px;color:var(--text)}
     #cafe-demo .special-card p{margin:0 18px 40px;color:var(--muted);font-size:14px}
     #cafe-demo .special-card .price-badge{position:absolute;top:12px;right:12px;background:var(--accent);color:#032b2a;font-weight:700;padding:4px 8px;border-radius:12px}
     #cafe-demo .special-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.15)}
+    @supports not (aspect-ratio:1/1){#cafe-demo .special-card .media{height:160px}@media(max-width:600px){#cafe-demo .special-card .media{height:220px}}}
 
     /* Gallery */
     #cafe-demo .gallery{column-count:3;column-gap:14px}
-    #cafe-demo .gallery img{width:100%;display:block;border-radius:12px;margin-bottom:14px;transition:transform .2s,box-shadow .2s}
+    #cafe-demo .gallery img{width:100%;display:block;border-radius:12px;margin-bottom:14px;transition:transform .2s,box-shadow .2s;break-inside:avoid;-webkit-column-break-inside:avoid}
     #cafe-demo .gallery img:hover{transform:scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.15)}
 
     /* Remove stray captions or broken images under gallery */
@@ -120,6 +124,8 @@
     #cafe-demo .gallery .wp-caption-text{display:none !important}
     /* Hide any orphaned image that renders only its alt text in the gallery section */
     #cafe-demo #gallery img[alt*="Coffee setup"]{display:none !important}
+
+    #cafe-demo #gallery .container{padding-bottom:24px}
 
     /* Reveal animations */
     #cafe-demo .reveal{opacity:0;transform:translateY(8px);transition:opacity .6s,transform .6s}
@@ -194,7 +200,7 @@
     /* Make overlay truly off by default; show only when menu is open */
     #cafe-demo .menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;opacity:0;pointer-events:none;transition:opacity .2s;display:none}
     body.menu-open #cafe-demo .menu-overlay{display:block;opacity:1;pointer-events:auto}
-    #cafe-demo .info-row{margin-top:28px;margin-bottom:32px;font-size:14px;color:#e8e2d9;text-align:center}
+    #cafe-demo .info-row{margin-top:28px;margin-bottom:40px;font-size:14px;color:#efeae6;text-align:center}
   </style>
   <a class="skip-link" href="#cafe-main">Skip to main content</a>
 
@@ -268,51 +274,51 @@
       <div class="menu-panels">
         <div id="tab-coffee" class="menu-panel active" role="tabpanel" aria-labelledby="tab-coffee-btn">
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Flat white</span><span class="note">Smooth & balanced</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$5</span>
           </div>
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1523942839745-7848c839b661?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1523942839745-7848c839b661?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Latte</span><span class="note">Velvety milk</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$5</span>
           </div>
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Cappuccino</span><span class="note">Foamy top</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$5</span>
           </div>
         </div>
         <div id="tab-cold" class="menu-panel" role="tabpanel" aria-labelledby="tab-cold-btn" hidden>
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6cf7?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Iced latte</span><span class="note">Chilled classic</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$6</span>
           </div>
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1532634726-8b9fb99825c7?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1532634726-8b9fb99825c7?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Cold brew</span><span class="note">Slow steeped</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$6</span>
           </div>
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1516689890471-83e50e79a5bb?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1516689890471-83e50e79a5bb?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Iced tea <span class="tag">V</span></span><span class="note">Peach or lemon</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$4.5</span>
           </div>
         </div>
         <div id="tab-food" class="menu-panel" role="tabpanel" aria-labelledby="tab-food-btn" hidden>
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1604909052916-11474603e10f?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1604909052916-11474603e10f?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Ham & cheese toastie</span><span class="note">Toasted sourdough</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$9.5</span>
           </div>
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1506086679525-9d6b46e4fbf3?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1506086679525-9d6b46e4fbf3?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Avocado smash <span class="tag">GF</span></span><span class="note">Lemon & feta</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$12</span>
           </div>
           <div class="item">
-            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=80&h=80&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()">
             <div class="meta"><span class="name">Veggie wrap <span class="tag">V</span></span><span class="note">Roasted veg</span></div>
             <span class="dots" aria-hidden="true"></span><span class="price">$8</span>
           </div>
@@ -403,7 +409,7 @@
         <div class="success" role="status" aria-live="polite"></div>
       </form>
       <p class="privacy">We only use your details to respond. No spam.</p>
-      <footer style="margin-top:22px;text-align:center;color:#e8e2d9">
+      <footer style="margin-top:22px;text-align:center">
         © Coastal Bean Café • <a href="mailto:hello@coastalbeancafe.com.au">hello@coastalbeancafe.com.au</a> • <a href="tel:+61400000000">+61 400 000 000</a>
       </footer>
     </div>
@@ -412,7 +418,7 @@
   </main>
 
   <footer>
-    <div class="container" style="color:#d6d3d1">Made with ☕ by RippleWorks</div>
+    <div class="container">Made with ☕ by RippleWorks</div>
   </footer>
 
   <script>
@@ -436,11 +442,14 @@
       const head = document.head;
       const desc = 'Coastal Bean Café in Aldinga SA — coffee, bites & community.';
       const hero = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=1200';
+      if(!head.querySelector('link[rel="preconnect"][href*="images.unsplash.com"]')){const l=document.createElement('link');l.rel='preconnect';l.href='https://images.unsplash.com';head.appendChild(l);}
     if(!head.querySelector('meta[name="description"]')){
       const m=document.createElement('meta');m.name='description';m.content=desc;head.appendChild(m);
       [['og:title','Coastal Bean Café'],['og:description',desc],['og:image',hero],['twitter:card','summary_large_image'],['twitter:title','Coastal Bean Café'],['twitter:description',desc],['twitter:image',hero]].forEach(([k,v])=>{const meta=document.createElement('meta');(k.startsWith('og:')?meta.setAttribute('property',k):meta.setAttribute('name',k));meta.content=v;head.appendChild(meta);});
       const ld=document.createElement('script');ld.type='application/ld+json';ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"LocalBusiness","name":"Coastal Bean Café","address":{"addressLocality":"Aldinga SA"},"geo":{"@type":"GeoCoordinates","latitude":-35.277,"longitude":138.469},"telephone":"+61 400 000 000"});head.appendChild(ld);
     }
+      const heroSection=document.querySelector('#cafe-demo .hero');
+      if(heroSection){const preload=document.createElement('img');preload.src=hero;preload.alt='';preload.setAttribute('fetchpriority','high');preload.decoding='async';preload.style.position='absolute';preload.style.width='0';preload.style.height='0';preload.style.overflow='hidden';heroSection.before(preload);preload.addEventListener('load',()=>preload.remove());}
 
     // Scroll shadow & parallax
     const header = document.querySelector('#cafe-demo #rw-topbar');
@@ -476,6 +485,7 @@
       overlay?.addEventListener('click', closeMenu);
       window.addEventListener('scroll', closeMenu, {passive:true});
       window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+      window.addEventListener('orientationchange', closeMenu);
       document.addEventListener('keydown', e => {
         if (!nav.classList.contains('open')) return;
         if (e.key === 'Escape') { closeMenu(); }
@@ -495,7 +505,8 @@
             const target = document.getElementById(id);
             if (target) {
               e.preventDefault();
-              const y = target.getBoundingClientRect().top + window.scrollY - 80;
+              const headerH = document.querySelector('#cafe-demo .rw-site')?.offsetHeight || 80;
+              const y = target.getBoundingClientRect().top + window.scrollY - (headerH + 8);
               window.scrollTo({top:y, behavior:'smooth'});
             }
           }
