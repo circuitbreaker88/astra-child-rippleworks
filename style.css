@@ -36,3 +36,9 @@
     max-height: 44px;
   }
 }
+
+/* Hide any top-level images WP may inject on the cafe page */
+.page-template-page-static-partial-php .entry-content > figure.wp-block-image,
+.page-template-page-static-partial-php .entry-content > p > img {
+  display: none !important;
+}

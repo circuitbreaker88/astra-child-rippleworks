@@ -6,7 +6,7 @@
     #cafe-demo *{box-sizing:border-box}
     #cafe-demo :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     #cafe-demo a{color:inherit;text-decoration:none}
-    #cafe-demo .container{max-width:1040px;margin:0 auto;padding:0 20px}
+    #cafe-demo .container{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
 
     /* Skip link */
     #cafe-demo .skip-link{position:absolute;left:10px;top:-40px;background:var(--accent);color:#032b2a;padding:8px 14px;border-radius:8px;font-weight:600;z-index:1001;transition:top .2s}
@@ -29,11 +29,11 @@
     #cafe-demo .hero{position:relative;color:#fff;min-height:72vh}
     #cafe-demo .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;filter:saturate(1.05);will-change:transform;content-visibility:auto}
     #cafe-demo .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,16,.55),rgba(27,20,16,.78))}
-    #cafe-demo .hero .inner{position:relative;padding:96px 0 44px}
+    #cafe-demo .hero .inner{position:relative;padding:96px 0 44px;display:flex;flex-direction:column;align-items:center;text-align:center}
     #cafe-demo .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:#a7f3d0;font-weight:800}
-    #cafe-demo h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(28px,7vw,44px);line-height:1.08;margin:10px 0 12px;text-shadow:0 1px 12px rgba(0,0,0,.35)}
-    #cafe-demo .lead{max-width:60ch;color:#e7f2fb;text-shadow:0 1px 12px rgba(0,0,0,.35)}
-    #cafe-demo .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    #cafe-demo h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(28px,7vw,44px);line-height:1.08;margin:10px 0 12px;text-shadow:0 1px 12px rgba(0,0,0,.35);margin-left:auto;margin-right:auto}
+    #cafe-demo .lead{max-width:60ch;color:#e7f2fb;text-shadow:0 1px 12px rgba(0,0,0,.35);margin-left:auto;margin-right:auto}
+    #cafe-demo .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;justify-content:center}
 
     /* Sections */
     #cafe-demo section{padding:64px 0}
@@ -91,7 +91,7 @@
     /* Mobile */
     @media(max-width:900px){#cafe-demo .two{grid-template-columns:1fr}}
     @media(max-width:900px){#cafe-demo .gallery{column-count:2}}
-@media(max-width:520px){#cafe-demo .container{padding:0 16px}#cafe-demo .lead{font-size:16px}#cafe-demo .hero-cta{flex-direction:column;align-items:stretch}#cafe-demo section{padding:52px 0}#cafe-demo .hero .inner{padding:80px 0 40px}}
+@media(max-width:520px){#cafe-demo .container{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}#cafe-demo .lead{font-size:16px}#cafe-demo .hero-cta{flex-direction:column;align-items:stretch}#cafe-demo section{padding:52px 0}#cafe-demo .hero .inner{padding:80px 0 40px}}
     @media (max-width:600px){#cafe-demo .specials{grid-template-columns:1fr}#cafe-demo .gallery{column-count:2}}
     @media (max-width:380px){#cafe-demo .gallery{column-count:1}}
     @media (max-width:420px){#cafe-demo .visit-card .map-links{flex-direction:column}}
@@ -448,9 +448,6 @@
       [['og:title','Coastal Bean Café'],['og:description',desc],['og:image',hero],['twitter:card','summary_large_image'],['twitter:title','Coastal Bean Café'],['twitter:description',desc],['twitter:image',hero]].forEach(([k,v])=>{const meta=document.createElement('meta');(k.startsWith('og:')?meta.setAttribute('property',k):meta.setAttribute('name',k));meta.content=v;head.appendChild(meta);});
       const ld=document.createElement('script');ld.type='application/ld+json';ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"LocalBusiness","name":"Coastal Bean Café","address":{"addressLocality":"Aldinga SA"},"geo":{"@type":"GeoCoordinates","latitude":-35.277,"longitude":138.469},"telephone":"+61 400 000 000"});head.appendChild(ld);
     }
-      const heroSection=document.querySelector('#cafe-demo .hero');
-      if(heroSection){const preload=document.createElement('img');preload.src=hero;preload.alt='';preload.setAttribute('fetchpriority','high');preload.decoding='async';preload.style.position='absolute';preload.style.width='0';preload.style.height='0';preload.style.overflow='hidden';heroSection.before(preload);preload.addEventListener('load',()=>preload.remove());}
-
     // Scroll shadow & parallax
     const header = document.querySelector('#cafe-demo #rw-topbar');
     const bg = document.querySelector('#cafe-demo .hero .bg');
